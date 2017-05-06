@@ -27,27 +27,20 @@ message PbRoute {
     string gateway = 4;
 }
 
+enum RuleType {
+    TCP = 0;
+    HTTP = 1;
+    UDP = 128;
+};
+
 message PbRule {
     uint32 id = 1;
-
-    enum RuleDirect {
-        INT2EXT = 0;
-        EXT2INT = 1;
-    };
-    RuleDirect direct = 2;
-
-    enum RuleType {
-        TCP = 0;
-        HTTP = 1;
-        UDP = 128;
-    };
-
-    RuleType type = 3;
-    string listenAddr = 4;
-    uint32 listenPort = 5;
-    string dstAddr = 6;
-    uint32 dstPort = 7;
-    string sendAddr = 8;
+    RuleType type = 2;
+    string listenAddr = 3;
+    uint32 listenPort = 4;
+    string dstAddr = 5;
+    uint32 dstPort = 6;
+    string sendAddr = 7;
 }
 
 message PbAddrMod {
